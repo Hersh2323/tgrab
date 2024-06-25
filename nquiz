@@ -1,0 +1,47 @@
+#!/bin/bash
+#c1max=293
+#c2max=192
+#c3max=160
+#c4max=200
+#c5max=220
+get_random_chapter(){
+	echo $((1 + $RANDOM % 5))	
+}
+
+get_num_based_on_chapter(){
+	if [ $# -eq 1 ]
+	then
+		if [ $1 == "1" ]
+		then
+			echo $((1 + $RANDOM % 293))	
+		fi
+
+		if [ $1 == "2" ]
+		then
+			echo $((1 + $RANDOM % 192))	
+		fi
+
+		if [ $1 == "3" ]
+		then
+			echo $((1 + $RANDOM % 160))	
+		fi
+
+		if [ $1 == "4" ]
+		then
+			echo $((1 + $RANDOM % 200))	
+		fi
+
+		if [ $1 == "5" ]
+		then
+			echo $((1 + $RANDOM % 220))	
+		fi
+	fi
+}
+
+randomly_select_question(){
+	chapter=$(get_random_chapter)
+	question=$(get_num_based_on_chapter $chapter)
+	echo "$chapter:$question"
+}
+
+randomly_select_question
