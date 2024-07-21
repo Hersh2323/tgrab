@@ -1,0 +1,16 @@
+#!/bin/bash
+cd output
+file=chapter_4_answers.txt
+#cat $file
+
+echo "" > chapter_4_answer_key.txt
+for n in $(seq 1 200)
+do
+	#echo "$n"
+	answer_line=$(grep -w "$n ." $file )
+	ans=$(echo $answer_line | awk -F'.' '{print $2}')
+	ans_ns=$(echo $ans | tr -d '[:blank:]')
+	ans_nc=$(echo $ans_ns | tr -d ',')
+	#echo "$ans_nc"
+	echo "$n:$ans_nc" >> chapter_4_answer_key.txt
+done
